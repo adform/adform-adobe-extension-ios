@@ -1,13 +1,26 @@
 # Publishing events using Adobe Experience SDK
 
-## 1. Set-up Adobe experience platform
+Track marketing events for Adform platform using Adobe experience SDK.
+
+## Features
+
+- All events sent to Adobe platform will be routed to Adform as well
+- Easily convert Adform's `TrackPoint` to Adobe events
+
+## Requirements
+
+- iOS 10
+- Adobe Core Libraries
+- Adform Tracking SDK
+
+## Set-up Adobe experience platform
 
 - To use Adobe experience sdk you'll have to integrate the Adobe experience sdk first
 - Then install `Adform mobile extenesion` in Adobe experience cloud platform
 
-## 2. Integerate Adform extension
+## Integerate Adform extension
 
-### 2.1 Using CocoaPods
+### 1. Using CocoaPods
 
 We are using CocaPods for dependency management. Therefore, please add this pod to your podfile:
 
@@ -15,26 +28,33 @@ We are using CocaPods for dependency management. Therefore, please add this pod 
 pod 'AdformAdobeExtension'
 ```
 
-### 2.2. Manual integration
+Then run `pod install` or `pod update` to install the latest version of the extension.
+
+### 2. Manual integration
 
 If you wish to integrate this extension manually, follow these steps: 
 
-1. Copy `libAdformAdobeExtension.a` and `include` folder and add them to your project. 
-2. Integrate required dependencies: `AdformTracking` and `ACPCore`. 
+1. Copy `AdformAdobeExtension` folder and add it to your project. 
+2. Integrate required dependencies: [AdformTracking](https://github.com/adform/adform-tracking-ios-sdk) and [ACPCore](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk). 
 
-### 2.3. Register Adform extension
+### 3. Register Adform extension
 
-To register Adform extension you just need to add this line of code to your Adobe Experience SDK setup:
+You should register Adform extension in `didFinishLaunchingWithOptions` app delegate method like this:
 
 ```obj-c
-[AdformAdobeExtension register];
+...
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    ...
+    [AdformAdobeExtension register];
+    ...
+}
 ```
 
-## 3. Sending events
+## Sending events
 
-There are a couple of ways to send events through Adobe Experience SDK. If you already have Adform integrated you can convenience method to convert current track points to event data or just create event data from scratch using provided key constants.
+There are a couple of ways to send events through Adobe Experience SDK. If you already have Adform integrated you can use convenience method to convert current track points to event data or just create event data from scratch using provided key constants.
 
-### 3.1. Using track point adapter
+### 1. Using track point adapter
 
 To minimize code changes needed to migrate to Adobe Experience SDK you can use `AFTEventAdapter` class to convert `AFTrackPoint` class instances to event data and send it through Adobe SDK. Following example shows you how to do it.
 
@@ -67,7 +87,7 @@ To minimize code changes needed to migrate to Adobe Experience SDK you can use `
 }
 ```
 
-### 3.2. Sending event data directly
+### 2. Sending event data directly
 
 If you have not created events for Adform before, there is a more generic way of sending those events:
 
