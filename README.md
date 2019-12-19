@@ -15,7 +15,7 @@ Track marketing events for Adform platform using Adobe experience SDK.
 
 ## Set-up Adobe experience platform
 
-- To use Adobe experience sdk you'll have to integrate the Adobe experience sdk first
+- Set-up Adobe experience patform
 - Then install `Adform mobile extenesion` in Adobe experience cloud platform
 
 ## Integerate Adform extension
