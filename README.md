@@ -124,3 +124,7 @@ If you have not created events for Adform before, there is a more generic way of
 ## 1.3.3
 
 ### Initial release
+
+## 1.3.4
+
+### Update readme
