@@ -87,6 +87,18 @@ To minimize code changes needed to migrate to Adobe Experience SDK you can use `
 }
 ```
 
+You can always use Adobe's '.trackState()' as well, though in Adform tracking SDK it works exactly the same, as you would use '.trackAction()'.
+
+```obj-c
+- (void)sendTrackPoint {
+    AFTrackPoint *trackPoint = [[AFTrackPoint alloc] initTrackPoint:123456789];
+    [trackPoint setAppName:@"DemoAdobe-iOS"];
+    
+    NSDictionary *data = [AFTEventAdapter makeContextDataFrom:trackPoint];
+    [ACPCore trackState: @"Demo-State" data: data];
+}
+```
+
 ### 2. Sending event data directly
 
 If you have not created events for Adform before, there is a more generic way of sending those events:
