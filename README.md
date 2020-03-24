@@ -140,3 +140,7 @@ If you have not created events for Adform before, there is a more generic way of
 ## 1.3.4
 
 ### Update readme
+
+## 1.5.1
+
+### Update state event forwarding
